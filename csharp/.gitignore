@@ -297,3 +297,12 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# ncrunch temp files
+.ncrunch*
+.*-ncrunch-*
+*.v3.ncrunch*
+
+# kata files
+ApprovalTest.ThirtyDays.approved.txt
+
