@@ -2,27 +2,25 @@ using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace csharp.Specs.WhenUpdatingTheQuality;
+namespace csharp.Specs.WhenUpdatingTheQuality.OfAgedBrie;
 
-public class OfStandardItemsBeforeTheirSellByDate
+public class BeforeItsSellByDate
 {
     private readonly IList<Item> _items = new List<Item>();
     
     [OneTimeSetUp]
     public void BeforeAll()
     {
-        _items.Add(new Item { Name = "Sword", SellIn = 5, Quality = 10 });
-        _items.Add(new Item { Name = "Shield", SellIn = 5, Quality = 10 });
-        _items.Add(new Item { Name = "Dagger", SellIn = 5, Quality = 10 });
+        _items.Add(new Item { Name = "Aged Brie", SellIn = 5, Quality = 10 });
         
         var app = new GildedRose(_items);
         app.UpdateQuality();
     }
 
     [Test]
-    public void TheQualityShouldLowerByOne()
+    public void TheQualityShouldIncreaseByOne()
     {
-        _items.Should().AllSatisfy(item => item.Quality.Should().Be(9));
+        _items.Should().AllSatisfy(item => item.Quality.Should().Be(11));
     }
     
     [Test]

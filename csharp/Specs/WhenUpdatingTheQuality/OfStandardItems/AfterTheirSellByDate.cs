@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace csharp.Specs.WhenUpdatingTheQuality;
+namespace csharp.Specs.WhenUpdatingTheQuality.OfStandardItems;
 
-public class OfStandardItemsAfterTheirSellByDate
+public class AfterTheirSellByDate
 {
     private readonly IList<Item> _items = new List<Item>();
     

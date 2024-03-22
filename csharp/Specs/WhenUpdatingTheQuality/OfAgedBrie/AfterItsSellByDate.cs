@@ -2,30 +2,30 @@ using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace csharp.Specs.WhenUpdatingTheQuality;
+namespace csharp.Specs.WhenUpdatingTheQuality.OfAgedBrie;
 
-public class OfAgedBrieBeforeItsSellByDate
+public class AfterItsSellByDate
 {
     private readonly IList<Item> _items = new List<Item>();
     
     [OneTimeSetUp]
     public void BeforeAll()
     {
-        _items.Add(new Item { Name = "Aged Brie", SellIn = 5, Quality = 10 });
+        _items.Add(new Item { Name = "Aged Brie", SellIn = -1, Quality = 10 });
         
         var app = new GildedRose(_items);
         app.UpdateQuality();
     }
 
     [Test]
-    public void TheQualityShouldIncreaseByOne()
+    public void TheQualityShouldIncreaseByTwo()
     {
-        _items.Should().AllSatisfy(item => item.Quality.Should().Be(11));
+        _items.Should().AllSatisfy(item => item.Quality.Should().Be(12));
     }
     
     [Test]
     public void TheSellInDaysShouldLowerByOne()
     {
-        _items.Should().AllSatisfy(item => item.SellIn.Should().Be(4));
+        _items.Should().AllSatisfy(item => item.SellIn.Should().Be(-2));
     }
 }
