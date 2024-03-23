@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace csharp.Specs.WhenUpdatingTheQuality.OfAgedBrie;
 
 public class AfterItsSellByDate
@@ -13,7 +9,9 @@ public class AfterItsSellByDate
     {
         _items.Add(new Item { Name = "Aged Brie", SellIn = -1, Quality = 10 });
         
-        var app = new GildedRose(_items);
+        var fixture = ScenarioHelper.CreateScenarioFixtureWith(_items);
+        var app = fixture.Create<GildedRose>();
+        
         app.UpdateQuality();
     }
 

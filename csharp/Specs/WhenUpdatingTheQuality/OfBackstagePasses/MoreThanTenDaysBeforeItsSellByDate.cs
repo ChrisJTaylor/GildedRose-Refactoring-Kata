@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace csharp.Specs.WhenUpdatingTheQuality.OfBackstagePasses;
 
 public class MoreThanTenDaysBeforeItsSellByDate
@@ -13,7 +9,9 @@ public class MoreThanTenDaysBeforeItsSellByDate
     {
         _items.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 11, Quality = 10 });
         
-        var app = new GildedRose(_items);
+        var fixture = ScenarioHelper.CreateScenarioFixtureWith(_items);
+        var app = fixture.Create<GildedRose>();
+        
         app.UpdateQuality();
     }
 
