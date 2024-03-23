@@ -32,4 +32,11 @@
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
     <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Specs\ApprovalTest.ThirtyDays.approved.txt">
+      <ParentExtension>.cs</ParentExtension>
+      <ParentFile>ApprovalTest</ParentFile>
+      <DependentUpon>ApprovalTest.cs</DependentUpon>
+    </None>
+  </ItemGroup>
 </Project>

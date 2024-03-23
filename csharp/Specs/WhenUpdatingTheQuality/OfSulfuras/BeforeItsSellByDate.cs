@@ -11,7 +11,7 @@ public class BeforeItsSellByDate
     [OneTimeSetUp]
     public void BeforeAll()
     {
-        _items.Add(new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 10, Quality = 10 });
+        _items.Add(new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 10, Quality = 80 });
         
         var app = new GildedRose(_items);
         app.UpdateQuality();
@@ -20,7 +20,7 @@ public class BeforeItsSellByDate
     [Test]
     public void TheQualityShouldNotChange()
     {
-        _items.Should().AllSatisfy(item => item.Quality.Should().Be(10));
+        _items.Should().AllSatisfy(item => item.Quality.Should().Be(80));
     }
     
     [Test]
