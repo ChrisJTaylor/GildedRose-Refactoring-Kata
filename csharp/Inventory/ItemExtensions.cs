@@ -19,7 +19,7 @@ internal static class ItemExtensions
        return item.IsNot(AgedBrie) && item.IsNot(Legendary);
    }
 
-   internal static bool IsPassedSellByDate(this Item item)
+   internal static bool IsPastSellByDate(this Item item)
    {
        return item.SellIn < 0;
    }
