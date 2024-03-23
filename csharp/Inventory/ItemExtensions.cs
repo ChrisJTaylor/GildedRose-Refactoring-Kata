@@ -1,6 +1,6 @@
-using static csharp.ItemCategoryType;
+using static csharp.Inventory.ItemCategoryType;
 
-namespace csharp;
+namespace csharp.Inventory;
 
 internal static class ItemExtensions
 {
