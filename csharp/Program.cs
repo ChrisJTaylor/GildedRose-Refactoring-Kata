@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SimpleInjector;
 
 namespace csharp
 {
@@ -7,6 +8,9 @@ namespace csharp
     {
         public static void Main(string[] args)
         {
+            var container = new Container();
+            container.Options.ResolveUnregisteredConcreteTypes = true;
+            
             Console.WriteLine("OMGHAI!");
 
             IList<Item> Items = new List<Item>{
@@ -36,9 +40,10 @@ namespace csharp
 				// this conjured item does not work properly yet
 				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
             };
+            
+            container.RegisterInstance(Items);
 
-            var app = new GildedRose(Items);
-
+            var app = container.GetInstance<GildedRose>();
 
             for (var i = 0; i < 31; i++)
             {
