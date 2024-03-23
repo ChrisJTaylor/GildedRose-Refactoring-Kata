@@ -1,56 +1,47 @@
-using static csharp.Inventory.ItemCategoryType;
-
 namespace csharp.Inventory;
 
+using static ItemCategoryType;
+
 internal static class ItemExtensions
-{
-
-    internal static bool Is(this Item item, ItemCategoryType category)
-   {
-       return item.Category() == category;
-   }
-   
-   internal static bool IsNot(this Item item, ItemCategoryType category) {
+{ 
+    internal static bool IsNot(this Item item, ItemCategoryType category) 
+    {
        return item.Category() != category;
-   }
-
-   internal static bool IsPerishable(this Item item)
-   {
-       return item.IsNot(AgedBrie) && item.IsNot(Legendary);
-   }
-
-   internal static bool IsPastSellByDate(this Item item)
-   {
+    }
+    
+    internal static bool IsPastSellByDate(this Item item)
+    {
        return item.SellIn < 0;
-   }
-   internal static void LowerQualityBy(this Item item, int amount)
-   {
+    }
+    
+    internal static void LowerQualityBy(this Item item, int amount)
+    {
        if (item.Quality > 0)
        { 
            item.Quality -= amount;
        }
-   }
+    }
 
-   internal static void RemoveQuality(this Item item)
-   {
+    internal static void RemoveQuality(this Item item)
+    {
        item.LowerQualityBy(item.Quality);
-   }
-   
-   internal static void IncreaseQualityBy(this Item item, int amount)
-   {
+    }
+
+    internal static void IncreaseQualityBy(this Item item, int amount)
+    {
        if (item.Quality < 50)
        { 
            item.Quality += amount;
        }
-   }
-   
-   internal static void ReduceSellInDaysBy(this Item item, int amount)
-   {
+    }
+
+    internal static void ReduceSellInDaysBy(this Item item, int amount)
+    {
        item.SellIn -= amount;
-   }
-   
+    }
+
     private static ItemCategoryType Category(this Item item)
-   {
+    {
        if (item.Name == "Aged Brie")
        {
            return AgedBrie;
@@ -67,5 +58,5 @@ internal static class ItemExtensions
        }
 
        return Standard;
-   }
+    }
 }

@@ -1,15 +1,71 @@
 namespace csharp.Inventory;
 
+using static ItemCategoryType;
+
 public sealed class InventoryItemProcessor 
 {
-    private readonly QuantityProcessor _quantityProcessor;
-
-    public InventoryItemProcessor(QuantityProcessor quantityProcessor)
+    public void UpdateItemProperties(Item item)
     {
-        _quantityProcessor = quantityProcessor;
+        UpdateStandardItem(item);
+        UpdateAgedBrieItem(item);
+        UpdateBackstagePassItem(item);
+        UpdateLegendaryItem(item);
     }
-    public void UpdateItemProperties(Item inventoryItem)
+    
+    private void UpdateLegendaryItem(Item item)
     {
-        _quantityProcessor.Update(inventoryItem);
+        if (item.IsNot(Legendary)) return;
+        
+        item.IncreaseQualityBy(1);
+    }
+
+    private void UpdateBackstagePassItem(Item item)
+    {
+        if (item.IsNot(BackstagePass)) return;
+        
+        item.IncreaseQualityBy(1);
+        
+        if (item.SellIn < 11)
+        {
+            item.IncreaseQualityBy(1);
+        }
+
+        if (item.SellIn < 6)
+        {
+            item.IncreaseQualityBy(1);
+        }
+        
+        item.ReduceSellInDaysBy(1);
+        if (item.IsPastSellByDate()) 
+        {
+            item.RemoveQuality();
+        }
+    }
+
+    private void UpdateAgedBrieItem(Item item)
+    {
+        if (item.IsNot(AgedBrie)) return;
+        
+        item.IncreaseQualityBy(1);
+        item.ReduceSellInDaysBy(1);
+
+        if (item.IsPastSellByDate())
+        {
+            item.IncreaseQualityBy(1);
+        }
+    }
+
+    private void UpdateStandardItem(Item item)
+    {
+        if (item.IsNot(Standard)) return;
+        
+        item.LowerQualityBy(1);
+        
+        item.ReduceSellInDaysBy(1);
+
+        if (item.IsPastSellByDate()) 
+        {
+            item.LowerQualityBy(1);
+        }
     }
 }
