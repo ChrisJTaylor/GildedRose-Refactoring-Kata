@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using csharp.Inventory.UpdateStrategies;
 using SimpleInjector;
 
 namespace csharp
@@ -10,6 +11,12 @@ namespace csharp
         {
             var container = new Container();
             container.Options.ResolveUnregisteredConcreteTypes = true;
+            
+            container.Collection.Register<IUpdateItemStrategy>(
+                typeof(UpdateStandardUpdateItem), 
+                typeof(UpdateAgedBrieUpdateItem),
+                typeof(UpdateBackstagePassUpdateItem),
+                typeof(UpdateLegendaryUpdateItem));
             
             Console.WriteLine("OMGHAI!");
 

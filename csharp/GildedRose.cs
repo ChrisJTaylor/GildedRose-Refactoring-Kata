@@ -1,23 +1,25 @@
-﻿using csharp.Inventory;
-
-namespace csharp;
+﻿namespace csharp;
+using Inventory.UpdateStrategies;
 
 public sealed class GildedRose
 {
     private readonly IList<Item> _items;
-    private readonly InventoryItemProcessor _inventoryItemProcessor;
+    private readonly IUpdateItemStrategy[] _updateItemStrategies;
 
-    public GildedRose(IList<Item> items, InventoryItemProcessor inventoryItemProcessor)
+    public GildedRose(IList<Item> items, IUpdateItemStrategy[] updateItemStrategies)
     {
         _items = items;
-        _inventoryItemProcessor = inventoryItemProcessor;
+        _updateItemStrategies = updateItemStrategies;
     }
 
     public void UpdateQuality()
     {
         foreach (var currentItem in _items)
         {
-            _inventoryItemProcessor.UpdateItemProperties(currentItem);
+            foreach (var updateItemStrategy in _updateItemStrategies)
+            {
+                updateItemStrategy.UpdateItem(currentItem);
+            }
         }
     }
 }
