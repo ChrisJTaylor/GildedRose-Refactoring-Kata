@@ -1,6 +1,6 @@
 namespace csharp.Inventory.UpdateStrategies;
 
-class UpdateBackstagePassUpdateItem : IUpdateItemStrategy
+internal class UpdateBackstagePassUpdateItem : IUpdateItemStrategy
 {
     public void UpdateItem(Item item)
     {

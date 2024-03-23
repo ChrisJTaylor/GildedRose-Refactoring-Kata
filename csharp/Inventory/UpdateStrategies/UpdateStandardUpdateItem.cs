@@ -1,6 +1,6 @@
 namespace csharp.Inventory.UpdateStrategies;
 
-class UpdateStandardUpdateItem : IUpdateItemStrategy
+internal class UpdateStandardUpdateItem : IUpdateItemStrategy
 {
     public void UpdateItem(Item item)
     {

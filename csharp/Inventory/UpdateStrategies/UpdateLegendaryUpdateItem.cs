@@ -1,6 +1,6 @@
 namespace csharp.Inventory.UpdateStrategies;
 
-class UpdateLegendaryUpdateItem : IUpdateItemStrategy
+internal class UpdateLegendaryUpdateItem : IUpdateItemStrategy
 {
     public void UpdateItem(Item item)
     {
