@@ -1,5 +1,6 @@
 namespace csharp.Inventory;
 
+using static Constants;
 using static ItemCategoryType;
 
 internal static class ItemExtensions
@@ -58,22 +59,22 @@ internal static class ItemExtensions
 
     private static ItemCategoryType Category(this Item item)
     {
-       if (item.Name.Equals("Aged Brie", StringComparison.InvariantCultureIgnoreCase))
+       if (item.Name.Equals(ItemIdentifiers.AgedBrie, StringComparison.InvariantCultureIgnoreCase))
        {
            return AgedBrie;
        }
 
-       if (item.Name.StartsWith("Backstage passes "))
+       if (item.Name.StartsWith(ItemIdentifiers.BackstagePasses))
        {
            return BackstagePass;
        }
 
-       if (item.Name.Equals("Sulfuras, Hand of Ragnaros", StringComparison.InvariantCultureIgnoreCase))
+       if (item.Name.Equals(ItemIdentifiers.Sulfuras, StringComparison.InvariantCultureIgnoreCase))
        {
            return Legendary;
        }
 
-       if (item.Name.StartsWith("Conjured "))
+       if (item.Name.StartsWith(ItemIdentifiers.Conjured))
        {
            return Conjured;
        }
