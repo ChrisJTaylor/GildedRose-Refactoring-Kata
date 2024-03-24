@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Logging;
-
 namespace csharp.Domain.Inventory;
 
 public class InventoryProcessor
