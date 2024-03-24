@@ -6,9 +6,9 @@ internal static class TestHelperExtensions
     {
         return new Fixture().Customize(new AutoMoqCustomization());
     }
-    internal static void VerifyLogWasCalled<TType>(this Mock<ILogger<TType>> loggerMock, string withMessage, Times times, LogLevel level = LogLevel.Information)
+    internal static void VerifyLogWasCalled<TType>(this Mock<ILogger<TType>> mockLogger, string withMessage, Times times, LogLevel level = LogLevel.Information)
     {
-        loggerMock.Verify(logger => logger.Log(level,
+        mockLogger.Verify(logger => logger.Log(level,
                 It.IsAny<EventId>(),
                 It.Is<It.IsAnyType>((actualMessage, _) => actualMessage.ToString().Equals(withMessage, StringComparison.InvariantCultureIgnoreCase)),
                 It.IsAny<Exception>(),

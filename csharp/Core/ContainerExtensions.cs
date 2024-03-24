@@ -1,12 +1,7 @@
-using csharp.Core.Logging;
-using csharp.Domain;
-using csharp.Domain.Inventory;
-using csharp.Domain.Inventory.UpdateStrategies;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using SimpleInjector;
 
-namespace csharp.Core.ConvenienceExtensions;
+namespace csharp.Core;
 
 internal static class ContainerExtensions
 {

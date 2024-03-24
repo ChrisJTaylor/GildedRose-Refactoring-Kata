@@ -30,7 +30,7 @@ public class WhenReportingTheProcess
    [TestCaseSource(nameof(_datePeriods))]
    public void ItShouldLogTheWelcomeMessageOnlyOnce(int startDay, int endDay, int _)
    {
-      _systemUnderTest.ProcessDaysBetween(startDay: startDay, endDay: endDay);
+      _systemUnderTest.ProcessDaysBetween(startDay, endDay);
       
       _logger.VerifyLogWasCalled(withMessage: "OMGHAI!", Times.Once());
    }
@@ -38,7 +38,7 @@ public class WhenReportingTheProcess
    [TestCaseSource(nameof(_datePeriods))]
    public void ItShouldLogTheDayIndexLineForEachDay(int startDay, int endDay, int _)
    {
-      _systemUnderTest.ProcessDaysBetween(startDay: startDay, endDay: endDay);
+      _systemUnderTest.ProcessDaysBetween(startDay, endDay);
 
       for (var dayIndex = startDay; dayIndex < endDay; dayIndex++)
       {
@@ -49,7 +49,7 @@ public class WhenReportingTheProcess
    [TestCaseSource(nameof(_datePeriods))]
    public void ItShouldLogTheHeaderLineForEachDay(int startDay, int endDay, int expectedCallCount)
    {
-      _systemUnderTest.ProcessDaysBetween(startDay: startDay, endDay: endDay);
+      _systemUnderTest.ProcessDaysBetween(startDay, endDay);
       
       _logger.VerifyLogWasCalled(withMessage: "name, sellIn, quality", Times.Exactly(expectedCallCount));
    }
@@ -57,7 +57,7 @@ public class WhenReportingTheProcess
    [TestCaseSource(nameof(_datePeriods))]
    public void ItShouldLogAllInventoryItemDetailsForEachDay(int startDay, int endDay, int expectedCallCount)
    {
-      _systemUnderTest.ProcessDaysBetween(startDay: startDay, endDay: endDay);
+      _systemUnderTest.ProcessDaysBetween(startDay, endDay);
 
       foreach (var item in _inventoryItems)
       {
@@ -68,7 +68,7 @@ public class WhenReportingTheProcess
    [TestCaseSource(nameof(_datePeriods))]
    public void ItShouldLogABlankLineForEachDay(int startDay, int endDay, int expectedCallCount)
    {
-      _systemUnderTest.ProcessDaysBetween(startDay: startDay, endDay: endDay);
+      _systemUnderTest.ProcessDaysBetween(startDay, endDay);
       
       _logger.VerifyLogWasCalled(withMessage: "", Times.Exactly(expectedCallCount));
    }

@@ -1,4 +1,4 @@
-﻿using csharp.Core.ConvenienceExtensions;
+﻿using csharp.Core;
 
 namespace csharp;
 
@@ -15,8 +15,7 @@ public class Program
             .RegisterComponents()
             .RegisterInventoryData(InventoryData.Seed());
 
-        var datePeriodProcessor = _container.GetInstance<InventoryProcessor>();
-        
-        datePeriodProcessor.ProcessDaysBetween(0, 31);
+        var inventoryProcessor = _container.GetInstance<InventoryProcessor>();
+        inventoryProcessor.ProcessDaysBetween(0, 31);
     }
 }

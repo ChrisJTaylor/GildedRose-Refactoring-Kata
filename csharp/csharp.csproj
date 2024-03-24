@@ -43,7 +43,4 @@
       <DependentUpon>ApprovalTest.cs</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
 </Project>
