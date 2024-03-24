@@ -1,3 +1,5 @@
+using static csharp.Domain.Inventory.Constants;
+
 namespace csharp.Domain.Inventory;
 
 public class InventoryProcessor
@@ -15,19 +17,19 @@ public class InventoryProcessor
 
     internal void ProcessDaysBetween(int startDay, int endDay)
     {
-        _logger.LogInformation("OMGHAI!");
+        _logger.LogInformation(LoggingMessages.Welcome);
         
         for (var dayIndex = startDay; dayIndex < endDay; dayIndex++)
         {
-            _logger.LogInformation($"-------- day {dayIndex} --------");
-            _logger.LogInformation("name, sellIn, quality");
+            _logger.LogInformation(LoggingMessages.DayIndexHeader, dayIndex);
+            _logger.LogInformation(LoggingMessages.ItemColumnHeader);
             
             foreach (var itemIndex in _inventoryItems)
             {
                 _logger.LogInformation(itemIndex.ToString());
             }
             
-            _logger.LogInformation("");
+            _logger.LogInformation(LoggingMessages.BlankLine);
             
             _gildedRose.UpdateQuality();
         }

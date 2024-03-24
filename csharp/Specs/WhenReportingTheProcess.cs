@@ -1,3 +1,5 @@
+using static csharp.Domain.Inventory.Constants;
+
 namespace csharp.Specs;
 
 using _Helpers;
@@ -32,7 +34,7 @@ public class WhenReportingTheProcess
    {
       _systemUnderTest.ProcessDaysBetween(startDay, endDay);
       
-      _logger.VerifyLogWasCalled(withMessage: "OMGHAI!", Times.Once());
+      _logger.VerifyLogWasCalled(withMessage: LoggingMessages.Welcome, Times.Once());
    }
    
    [TestCaseSource(nameof(_datePeriods))]
@@ -51,7 +53,7 @@ public class WhenReportingTheProcess
    {
       _systemUnderTest.ProcessDaysBetween(startDay, endDay);
       
-      _logger.VerifyLogWasCalled(withMessage: "name, sellIn, quality", Times.Exactly(expectedCallCount));
+      _logger.VerifyLogWasCalled(withMessage: LoggingMessages.ItemColumnHeader, Times.Exactly(expectedCallCount));
    }
    
    [TestCaseSource(nameof(_datePeriods))]
@@ -70,6 +72,6 @@ public class WhenReportingTheProcess
    {
       _systemUnderTest.ProcessDaysBetween(startDay, endDay);
       
-      _logger.VerifyLogWasCalled(withMessage: "", Times.Exactly(expectedCallCount));
+      _logger.VerifyLogWasCalled(withMessage: LoggingMessages.BlankLine, Times.Exactly(expectedCallCount));
    }
 }
