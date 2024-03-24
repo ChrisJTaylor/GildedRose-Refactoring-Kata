@@ -5,13 +5,13 @@ internal class DatePeriodProcessor
     private readonly IGildedRose _gildedRose;
     private readonly IList<Item> _inventoryItems;
 
-    public DatePeriodProcessor(IGildedRose gildedRose, IList<Item> inventoryItems)
+    internal DatePeriodProcessor(IGildedRose gildedRose, IList<Item> inventoryItems)
     {
         _gildedRose = gildedRose;
         _inventoryItems = inventoryItems;
     }
 
-    public void ProcessDaysBetween(int startDay, int endDay)
+    internal void ProcessDaysBetween(int startDay, int endDay)
     {
         for (var dayIndex = startDay; dayIndex < endDay; dayIndex++)
         {
