@@ -1,64 +1,37 @@
-﻿namespace csharp;
+﻿using csharp.Inventory;
+
+namespace csharp;
     
-using Inventory.UpdateStrategies;
+using ConvenienceExtensions;
+using static ConvenienceExtensions.ContainerExtensions;
 using SimpleInjector;
 public class Program
 {
+    private static Container _container;
+
     public static void Main(string[] args)
     {
-        var container = new Container();
-        container.Options.ResolveUnregisteredConcreteTypes = true;
+        _container = InitialiseContainer()
+            .RegisterItemProcessingStrategies()
+            .RegisterInventoryData(InventoryData.Seed());
 
-        container.Collection.Register<IUpdateItemStrategy>(
-            typeof(UpdateStandardItem),
-            typeof(UpdateAgedBrieItem),
-            typeof(UpdateBackstagePassItem),
-            typeof(UpdateConjuredItem));
+        var items = _container.GetInstance<IList<Item>>();
         
         Console.WriteLine("OMGHAI!");
 
-        IList<Item> Items = new List<Item>{
-            new() {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
-            new() {Name = "Aged Brie", SellIn = 2, Quality = 0},
-            new() {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-            new() {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-            new() {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
-            new()
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 15,
-                Quality = 20
-            },
-            new()
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 10,
-                Quality = 49
-            },
-            new()
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 5,
-                Quality = 49
-            },
-			// this conjured item does not work properly yet
-			new() {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
-        };
-        
-        container.RegisterInstance(Items);
-
-        var app = container.GetInstance<GildedRose>();
+        var app = _container.GetInstance<GildedRose>();
 
         for (var i = 0; i < 31; i++)
         {
             Console.WriteLine("-------- day " + i + " --------");
             Console.WriteLine("name, sellIn, quality");
-            for (var j = 0; j < Items.Count; j++)
+            for (var j = 0; j < items.Count; j++)
             {
-                Console.WriteLine(Items[j]);
+                Console.WriteLine(items[j]);
             }
             Console.WriteLine("");
             app.UpdateQuality();
         }
     }
+    
 }
