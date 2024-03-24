@@ -13,13 +13,14 @@ public class Program
     {
         _container = InitialiseContainer()
             .RegisterItemProcessingStrategies()
+            .RegisterComponents()
             .RegisterInventoryData(InventoryData.Seed());
 
         var items = _container.GetInstance<IList<Item>>();
         
         Console.WriteLine("OMGHAI!");
 
-        var app = _container.GetInstance<GildedRose>();
+        var app = _container.GetInstance<IGildedRose>();
 
         for (var i = 0; i < 31; i++)
         {

@@ -1,7 +1,7 @@
 ﻿namespace csharp;
 using Inventory.UpdateStrategies;
 
-public sealed class GildedRose
+public sealed class GildedRose : IGildedRose
 {
     IList<Item> Items;
     private readonly IUpdateItemStrategy[] _updateItemStrategies;
