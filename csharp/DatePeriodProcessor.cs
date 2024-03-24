@@ -5,7 +5,7 @@ internal class DatePeriodProcessor
     private readonly IGildedRose _gildedRose;
     private readonly IList<Item> _inventoryItems;
 
-    internal DatePeriodProcessor(IGildedRose gildedRose, IList<Item> inventoryItems)
+    public DatePeriodProcessor(IGildedRose gildedRose, IList<Item> inventoryItems)
     {
         _gildedRose = gildedRose;
         _inventoryItems = inventoryItems;
@@ -17,9 +17,9 @@ internal class DatePeriodProcessor
         {
             Console.WriteLine("-------- day " + dayIndex + " --------");
             Console.WriteLine("name, sellIn, quality");
-            for (var j = 0; j < _inventoryItems.Count; j++)
+            foreach (var itemIndex in _inventoryItems)
             {
-                Console.WriteLine(_inventoryItems[j]);
+                Console.WriteLine(itemIndex);
             }
             Console.WriteLine("");
             _gildedRose.UpdateQuality();
