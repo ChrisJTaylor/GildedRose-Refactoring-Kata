@@ -23,6 +23,12 @@ internal static class ContainerExtensions
 
         return container;
     }
+
+    internal static Container RegisterComponents(this Container container)
+    {
+        container.Register<IGildedRose, GildedRose>();
+        return container;
+    }
     
     internal static Container RegisterInventoryData(this Container container, IList<Item> items)
     {

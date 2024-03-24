@@ -16,23 +16,10 @@ public class Program
             .RegisterComponents()
             .RegisterInventoryData(InventoryData.Seed());
 
-        var items = _container.GetInstance<IList<Item>>();
-        
         Console.WriteLine("OMGHAI!");
 
-        var app = _container.GetInstance<IGildedRose>();
-
-        for (var i = 0; i < 31; i++)
-        {
-            Console.WriteLine("-------- day " + i + " --------");
-            Console.WriteLine("name, sellIn, quality");
-            for (var j = 0; j < items.Count; j++)
-            {
-                Console.WriteLine(items[j]);
-            }
-            Console.WriteLine("");
-            app.UpdateQuality();
-        }
+        var datePeriodProcessor = _container.GetInstance<DatePeriodProcessor>();
+        
+        datePeriodProcessor.ProcessDaysBetween(0, 31);
     }
-    
 }
