@@ -10,10 +10,11 @@ public class Program
         container.Options.ResolveUnregisteredConcreteTypes = true;
         
         container.Collection.Register<IUpdateItemStrategy>(
-            typeof(UpdateStandardUpdateItem), 
-            typeof(UpdateAgedBrieUpdateItem),
-            typeof(UpdateBackstagePassUpdateItem),
-            typeof(UpdateLegendaryUpdateItem));
+            typeof(UpdateStandardItem), 
+            typeof(UpdateAgedBrieItem),
+            typeof(UpdateBackstagePassItem),
+            typeof(UpdateConjuredItem),
+            typeof(UpdateLegendaryItem));
         
         Console.WriteLine("OMGHAI!");
 

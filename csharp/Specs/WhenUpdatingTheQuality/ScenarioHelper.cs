@@ -9,10 +9,11 @@ internal static class ScenarioHelper
         var fixture = new Fixture();
         fixture.Register(() => items);
         fixture.Register<IUpdateItemStrategy[]>(() => [
-            fixture.Create<UpdateStandardUpdateItem>(),
-            fixture.Create<UpdateBackstagePassUpdateItem>(),
-            fixture.Create<UpdateAgedBrieUpdateItem>(),
-            fixture.Create<UpdateLegendaryUpdateItem>()
+            fixture.Create<UpdateStandardItem>(),
+            fixture.Create<UpdateBackstagePassItem>(),
+            fixture.Create<UpdateAgedBrieItem>(),
+            fixture.Create<UpdateConjuredItem>(),
+            fixture.Create<UpdateLegendaryItem>()
         ]);
         return fixture;
     }

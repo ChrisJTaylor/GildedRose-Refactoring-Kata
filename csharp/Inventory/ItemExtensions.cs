@@ -20,6 +20,8 @@ internal static class ItemExtensions
        { 
            item.Quality -= amount;
        }
+       
+       item.EnsureQualityIsNotBelowZero();
     }
 
     internal static void RemoveQuality(this Item item)
@@ -39,6 +41,14 @@ internal static class ItemExtensions
     {
        item.SellIn -= amount;
     }
+    
+    private static void EnsureQualityIsNotBelowZero(this Item item)
+    {
+        if (item.Quality <= 0)
+        {
+            item.Quality = 0;
+        }
+    }
 
     private static ItemCategoryType Category(this Item item)
     {
@@ -55,6 +65,11 @@ internal static class ItemExtensions
        if (item.Name == "Sulfuras, Hand of Ragnaros")
        {
            return Legendary;
+       }
+
+       if (item.Name.StartsWith("Conjured "))
+       {
+           return Conjured;
        }
 
        return Standard;

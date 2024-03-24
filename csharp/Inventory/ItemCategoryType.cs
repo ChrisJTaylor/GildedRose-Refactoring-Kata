@@ -5,5 +5,6 @@ internal enum ItemCategoryType
     Standard,
     AgedBrie,
     BackstagePass,
-    Legendary
+    Legendary,
+    Conjured
 }
