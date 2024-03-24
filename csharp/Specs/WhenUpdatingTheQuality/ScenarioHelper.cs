@@ -12,8 +12,7 @@ internal static class ScenarioHelper
             fixture.Create<UpdateStandardItem>(),
             fixture.Create<UpdateBackstagePassItem>(),
             fixture.Create<UpdateAgedBrieItem>(),
-            fixture.Create<UpdateConjuredItem>(),
-            fixture.Create<UpdateLegendaryItem>()
+            fixture.Create<UpdateConjuredItem>()
         ]);
         return fixture;
     }

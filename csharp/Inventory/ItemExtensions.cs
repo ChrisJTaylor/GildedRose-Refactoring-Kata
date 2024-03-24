@@ -16,12 +16,10 @@ internal static class ItemExtensions
     
     internal static void LowerQualityBy(this Item item, int amount)
     {
-       if (item.Quality > 0)
-       { 
-           item.Quality -= amount;
-       }
-       
-       item.EnsureQualityIsNotBelowZero();
+        item.Quality -= amount;
+
+        const int minimumQualityForStandardItems = 0;
+        item.EnsureQualityIsNotBelow(minimumQualityForStandardItems);
     }
 
     internal static void RemoveQuality(this Item item)
@@ -31,10 +29,10 @@ internal static class ItemExtensions
 
     internal static void IncreaseQualityBy(this Item item, int amount)
     {
-       if (item.Quality < 50)
-       { 
-           item.Quality += amount;
-       }
+        item.Quality += amount;
+
+        const int maximumQualityForStandardItems = 50;
+        item.EnsureQualityIsNotAbove(maximumQualityForStandardItems);
     }
 
     internal static void ReduceSellInDaysBy(this Item item, int amount)
@@ -42,17 +40,25 @@ internal static class ItemExtensions
        item.SellIn -= amount;
     }
     
-    private static void EnsureQualityIsNotBelowZero(this Item item)
+    private static void EnsureQualityIsNotBelow(this Item item, int amount)
     {
-        if (item.Quality <= 0)
+        if (item.Quality <= amount)
         {
-            item.Quality = 0;
+            item.Quality = amount;
+        }
+    }
+    
+    private static void EnsureQualityIsNotAbove(this Item item, int amount)
+    {
+        if (item.Quality >= amount)
+        {
+            item.Quality = amount;
         }
     }
 
     private static ItemCategoryType Category(this Item item)
     {
-       if (item.Name == "Aged Brie")
+       if (item.Name.Equals("Aged Brie", StringComparison.InvariantCultureIgnoreCase))
        {
            return AgedBrie;
        }
@@ -62,7 +68,7 @@ internal static class ItemExtensions
            return BackstagePass;
        }
 
-       if (item.Name == "Sulfuras, Hand of Ragnaros")
+       if (item.Name.Equals("Sulfuras, Hand of Ragnaros", StringComparison.InvariantCultureIgnoreCase))
        {
            return Legendary;
        }
