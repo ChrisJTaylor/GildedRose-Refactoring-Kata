@@ -1,5 +1,4 @@
 ﻿using csharp.Core.ConvenienceExtensions;
-using csharp.Domain.Inventory;
 
 namespace csharp;
 
