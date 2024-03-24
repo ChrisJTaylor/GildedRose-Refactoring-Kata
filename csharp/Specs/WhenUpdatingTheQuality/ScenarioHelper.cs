@@ -1,12 +1,12 @@
-using csharp.Inventory.UpdateStrategies;
-
 namespace csharp.Specs.WhenUpdatingTheQuality;
+
+using static _Helpers.TestHelperExtensions;
 
 internal static class ScenarioHelper
 {
     internal static IFixture CreateScenarioFixtureWith(IList<Item> items)
     {
-        var fixture = new Fixture();
+        var fixture = CreateFixture();
         fixture.Register(() => items);
         fixture.Register<IUpdateItemStrategy[]>(() => [
             fixture.Create<UpdateStandardItem>(),

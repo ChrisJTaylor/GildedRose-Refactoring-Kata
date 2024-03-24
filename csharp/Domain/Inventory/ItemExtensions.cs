@@ -1,4 +1,4 @@
-namespace csharp.Inventory;
+namespace csharp.Domain.Inventory;
 
 using static Constants;
 using static ItemCategoryType;

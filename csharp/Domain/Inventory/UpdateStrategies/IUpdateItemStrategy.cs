@@ -1,4 +1,4 @@
-namespace csharp.Inventory.UpdateStrategies;
+namespace csharp.Domain.Inventory.UpdateStrategies;
 
 public interface IUpdateItemStrategy
 {

@@ -1,5 +1,6 @@
-﻿namespace csharp;
-using Inventory.UpdateStrategies;
+﻿using csharp.Domain.Inventory.UpdateStrategies;
+
+namespace csharp.Domain;
 
 public sealed class GildedRose : IGildedRose
 {

@@ -1,19 +1,18 @@
-using AutoFixture.AutoMoq;
-using Moq;
-
 namespace csharp.Specs;
+
+using static _Helpers.TestHelperExtensions;
 
 public class WhenProcessingADatePeriod
 {
    private Mock<IGildedRose> _gildedRose;
-   private DatePeriodProcessor _systemUnderTest;
+   private InventoryProcessor _systemUnderTest;
 
    [SetUp]
    public void BeforeEach()
    {
-      var fixture = new Fixture().Customize(new AutoMoqCustomization());
+      var fixture = CreateFixture();
       _gildedRose = fixture.Freeze<Mock<IGildedRose>>();
-      _systemUnderTest = fixture.Create<DatePeriodProcessor>();
+      _systemUnderTest = fixture.Create<InventoryProcessor>();
    }
 
    [TestCase(0, 1, 1)]

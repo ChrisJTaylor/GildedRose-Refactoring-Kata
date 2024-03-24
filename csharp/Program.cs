@@ -1,9 +1,9 @@
-﻿using csharp.Inventory;
+﻿using csharp.Core.ConvenienceExtensions;
+using csharp.Domain.Inventory;
 
 namespace csharp;
-    
-using ConvenienceExtensions;
-using static ConvenienceExtensions.ContainerExtensions;
+
+using static ContainerExtensions;
 using SimpleInjector;
 public class Program
 {
@@ -16,9 +16,7 @@ public class Program
             .RegisterComponents()
             .RegisterInventoryData(InventoryData.Seed());
 
-        Console.WriteLine("OMGHAI!");
-
-        var datePeriodProcessor = _container.GetInstance<DatePeriodProcessor>();
+        var datePeriodProcessor = _container.GetInstance<InventoryProcessor>();
         
         datePeriodProcessor.ProcessDaysBetween(0, 31);
     }

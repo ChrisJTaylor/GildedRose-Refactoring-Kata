@@ -1,7 +1,12 @@
-namespace csharp.ConvenienceExtensions;
-
-using Inventory.UpdateStrategies;
+using csharp.Core.Logging;
+using csharp.Domain;
+using csharp.Domain.Inventory;
+using csharp.Domain.Inventory.UpdateStrategies;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using SimpleInjector;
+
+namespace csharp.Core.ConvenienceExtensions;
 
 internal static class ContainerExtensions
 {
@@ -27,6 +32,12 @@ internal static class ContainerExtensions
     internal static Container RegisterComponents(this Container container)
     {
         container.Register<IGildedRose, GildedRose>();
+        var factory = LoggerFactory.Create(builder =>
+        {
+            builder.AddConsole(options => options.FormatterName = PlainLogFormatter.FormatterName);
+            builder.AddConsoleFormatter<PlainLogFormatter, ConsoleFormatterOptions>();
+        });
+        container.Register(() => factory.CreateLogger<InventoryProcessor>());
         return container;
     }
     

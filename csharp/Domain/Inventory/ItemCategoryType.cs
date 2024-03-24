@@ -1,4 +1,4 @@
-namespace csharp.Inventory;
+namespace csharp.Domain.Inventory;
 
 internal enum ItemCategoryType
 {
