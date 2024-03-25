@@ -2,7 +2,7 @@ using static csharp.Domain.Inventory.Constants;
 
 namespace csharp.Domain.Inventory;
 
-public class InventoryProcessor
+public sealed class InventoryProcessor
 {
     private readonly IGildedRose _gildedRose;
     private readonly IList<Item> _inventoryItems;
