@@ -3,6 +3,8 @@ namespace csharp.Domain.Inventory;
 using static Constants;
 using static ItemCategoryType;
 
+using QualityQuotient = int;
+
 internal static class ItemExtensions
 { 
     internal static bool IsNot(this Item item, ItemCategoryType category) 
@@ -15,7 +17,7 @@ internal static class ItemExtensions
        return item.SellIn < 0;
     }
     
-    internal static void LowerQualityBy(this Item item, int amount)
+    internal static void LowerQualityBy(this Item item, QualityQuotient amount)
     {
         item.Quality -= amount;
 
@@ -28,20 +30,20 @@ internal static class ItemExtensions
        item.LowerQualityBy(item.Quality);
     }
 
-    internal static void IncreaseQualityBy(this Item item, int amount)
+    internal static void IncreaseQualityBy(this Item item, QualityQuotient amount)
     {
         item.Quality += amount;
 
-        const int maximumQualityForStandardItems = 50;
+        const QualityQuotient maximumQualityForStandardItems = 50;
         item.EnsureQualityIsNotAbove(maximumQualityForStandardItems);
     }
 
-    internal static void ReduceSellInDaysBy(this Item item, int amount)
+    internal static void ReduceSellInDaysBy(this Item item, QualityQuotient amount)
     {
        item.SellIn -= amount;
     }
     
-    private static void EnsureQualityIsNotBelow(this Item item, int amount)
+    private static void EnsureQualityIsNotBelow(this Item item, QualityQuotient amount)
     {
         if (item.Quality <= amount)
         {
@@ -49,7 +51,7 @@ internal static class ItemExtensions
         }
     }
     
-    private static void EnsureQualityIsNotAbove(this Item item, int amount)
+    private static void EnsureQualityIsNotAbove(this Item item, QualityQuotient amount)
     {
         if (item.Quality >= amount)
         {
