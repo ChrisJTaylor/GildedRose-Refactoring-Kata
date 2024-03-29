@@ -15,4 +15,12 @@ internal static class TestHelperExtensions
                 It.IsAny<Func<It.IsAnyType, Exception, string>>()),
             times);
     }
+
+    internal static Mock<TType> CreateAndRegisterMockOf<TType>(this IFixture fixture) where TType : class
+    {
+        var mockObj = fixture.Create<Mock<TType>>();
+        fixture.Register(() => mockObj);
+        fixture.Register(() => mockObj.Object);
+        return mockObj;
+    }
 }

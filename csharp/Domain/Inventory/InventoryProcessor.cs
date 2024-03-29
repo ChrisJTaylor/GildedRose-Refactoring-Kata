@@ -4,11 +4,11 @@ namespace csharp.Domain.Inventory;
 
 public sealed class InventoryProcessor
 {
-    private readonly IGildedRose _gildedRose;
+    private readonly GildedRose _gildedRose;
     private readonly IList<Item> _inventoryItems;
     private readonly ILogger<InventoryProcessor> _logger;
 
-    public InventoryProcessor(IGildedRose gildedRose, IList<Item> inventoryItems, ILogger<InventoryProcessor> logger)
+    public InventoryProcessor(GildedRose gildedRose, IList<Item> inventoryItems, ILogger<InventoryProcessor> logger)
     {
         _gildedRose = gildedRose;
         _inventoryItems = inventoryItems;

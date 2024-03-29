@@ -1,6 +1,6 @@
 ﻿namespace csharp.Domain;
 
-public sealed class GildedRose : IGildedRose
+public class GildedRose
 {
     private readonly IList<Item> _items;
     private readonly IUpdateItemStrategy[] _updateItemStrategies;
@@ -11,7 +11,7 @@ public sealed class GildedRose : IGildedRose
         _updateItemStrategies = updateItemStrategies;
     }
 
-    public void UpdateQuality()
+    public virtual void UpdateQuality()
     {
         foreach (var currentItem in _items)
         {

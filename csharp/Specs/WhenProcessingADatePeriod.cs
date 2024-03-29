@@ -4,14 +4,14 @@ using static _Helpers.TestHelperExtensions;
 
 public class WhenProcessingADatePeriod
 {
-   private Mock<IGildedRose> _gildedRose;
+   private Mock<GildedRose> _gildedRose;
    private InventoryProcessor _systemUnderTest;
 
    [SetUp]
    public void BeforeEach()
    {
       var fixture = CreateFixture();
-      _gildedRose = fixture.Freeze<Mock<IGildedRose>>();
+      _gildedRose = fixture.CreateAndRegisterMockOf<GildedRose>();
       _systemUnderTest = fixture.Create<InventoryProcessor>();
    }
 

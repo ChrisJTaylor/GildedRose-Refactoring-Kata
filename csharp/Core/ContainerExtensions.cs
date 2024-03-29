@@ -26,7 +26,6 @@ internal static class ContainerExtensions
 
     internal static Container RegisterComponents(this Container container)
     {
-        container.Register<IGildedRose, GildedRose>();
         var factory = LoggerFactory.Create(builder =>
         {
             builder.AddConsole(options => options.FormatterName = PlainLogFormatter.FormatterName);
