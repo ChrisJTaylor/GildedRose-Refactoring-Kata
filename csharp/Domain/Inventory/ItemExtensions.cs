@@ -4,6 +4,7 @@ using static Constants;
 using static ItemCategoryType;
 
 using QualityQuotient = int;
+using Days = int;
 
 internal static class ItemExtensions
 { 
@@ -38,7 +39,7 @@ internal static class ItemExtensions
         item.EnsureQualityIsNotAbove(maximumQualityForStandardItems);
     }
 
-    internal static void ReduceSellInDaysBy(this Item item, QualityQuotient amount)
+    internal static void ReduceSellInDaysBy(this Item item, Days amount)
     {
        item.SellIn -= amount;
     }
