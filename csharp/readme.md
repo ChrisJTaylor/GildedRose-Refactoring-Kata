@@ -34,10 +34,13 @@ Just to check, I ran the mutation tests several more times, and still got 100%, 
 
 ### A little while later...
 
-I ran the mutation tests again, and got one failure. This was effectively the same as the first issues, 
-but now saying that equality doesn't break the code. I don't love this feedback, as it doesn't really change
-the logic. However, I can circumvent it by clamping the values instead. Obviously, underneath the hood this is
-effectively doing the same thing, but it's the .Net SDK's problem, and beyond the reach of the mutants.
+I ran the mutation tests again, and got one failure. 
+
+![image](https://github.com/ChrisJTaylor/GildedRose-Refactoring-Kata/assets/2196813/8b7874cf-ff95-4a58-8909-51654b8d7a92)
+
+This was effectively the same as the first issues, but now saying that equality doesn't break the code. 
+I don't love this feedback, as it doesn't really change the logic. However, I can circumvent it by clamping the values instead. 
+Obviously, underneath the hood this is effectively doing the same thing, but it's the .Net SDK's problem, and beyond the reach of the mutants.
 
 ## Notes
 
