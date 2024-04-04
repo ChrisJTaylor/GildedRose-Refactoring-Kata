@@ -46,18 +46,12 @@ internal static class ItemExtensions
     
     private static void EnsureQualityIsNotBelow(this Item item, QualityQuotient amount)
     {
-        if (item.Quality < amount)
-        {
-            item.Quality = amount;
-        }
+        item.Quality = Math.Clamp(item.Quality, amount, 50);
     }
     
     private static void EnsureQualityIsNotAbove(this Item item, QualityQuotient amount)
     {
-        if (item.Quality > amount)
-        {
-            item.Quality = amount;
-        }
+        item.Quality = Math.Clamp(item.Quality, 0, amount);
     }
 
     private static ItemCategoryType Category(this Item item)
