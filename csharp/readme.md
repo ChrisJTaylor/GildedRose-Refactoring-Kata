@@ -32,6 +32,13 @@ Just to check, I ran the mutation tests several more times, and still got 100%, 
 
 ![image](https://github.com/ChrisJTaylor/GildedRose-Refactoring-Kata/assets/2196813/4de87cfb-e773-46ff-ad17-ccdcc60ac438)
 
+### A little while later...
+
+I ran the mutation tests again, and got one failure. This was effectively the same as the first issues, 
+but now saying that equality doesn't break the code. I don't love this feedback, as it doesn't really change
+the logic. However, I can circumvent it by clamping the values instead. Obviously, underneath the hood this is
+effectively doing the same thing, but it's the .Net SDK's problem, and beyond the reach of the mutants.
+
 ## Notes
 
 I liked the feedback that I got from the mutation tests. I like the confidence that I gained from the high positives, 

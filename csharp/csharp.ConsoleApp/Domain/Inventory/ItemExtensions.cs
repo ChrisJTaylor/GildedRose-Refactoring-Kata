@@ -7,7 +7,9 @@ using QualityQuotient = int;
 using Days = int;
 
 internal static class ItemExtensions
-{ 
+{
+    private const int MinimumQualityForStandardItems = 0;
+    private const QualityQuotient MaximumQualityForStandardItems = 50;
     internal static bool IsNot(this Item item, ItemCategoryType category) 
     {
        return item.Category() != category;
@@ -22,8 +24,7 @@ internal static class ItemExtensions
     {
         item.Quality -= amount;
 
-        const int minimumQualityForStandardItems = 0;
-        item.EnsureQualityIsNotBelow(minimumQualityForStandardItems);
+        item.EnsureQualityIsWithinValidRange();
     }
 
     internal static void RemoveQuality(this Item item)
@@ -35,8 +36,7 @@ internal static class ItemExtensions
     {
         item.Quality += amount;
 
-        const QualityQuotient maximumQualityForStandardItems = 50;
-        item.EnsureQualityIsNotAbove(maximumQualityForStandardItems);
+        item.EnsureQualityIsWithinValidRange();
     }
 
     internal static void ReduceSellInDaysBy(this Item item, Days amount)
@@ -44,14 +44,9 @@ internal static class ItemExtensions
        item.SellIn -= amount;
     }
     
-    private static void EnsureQualityIsNotBelow(this Item item, QualityQuotient amount)
+    private static void EnsureQualityIsWithinValidRange(this Item item)
     {
-        item.Quality = Math.Clamp(item.Quality, amount, 50);
-    }
-    
-    private static void EnsureQualityIsNotAbove(this Item item, QualityQuotient amount)
-    {
-        item.Quality = Math.Clamp(item.Quality, 0, amount);
+        item.Quality = Math.Clamp(item.Quality, MinimumQualityForStandardItems, MaximumQualityForStandardItems);
     }
 
     private static ItemCategoryType Category(this Item item)
