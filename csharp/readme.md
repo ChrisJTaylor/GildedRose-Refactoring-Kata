@@ -4,7 +4,7 @@ I split this into separate projects for the App and the Tests, in order to make 
 
 This is my first exploration into mutation tests. I consider myself to be a strong TDD-er, so I was keen to see what kind of results I would get. 
 
-## Mutatation test results
+## Mutation test results
 
 ### First run
 
